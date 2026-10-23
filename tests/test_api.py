@@ -83,6 +83,11 @@ def test_version_pinned_selection_and_generation_staleness_flow(
     assert forced.status_code == 200
     assert forced.json()["generation_id"] != first_generation["generation_id"]
     assert calls == 2
+    latest_reuse = test_client.post(
+        "/generations", json={"selection_id": selection["id"]}
+    )
+    assert latest_reuse.json()["generation_id"] == forced.json()["generation_id"]
+    assert latest_reuse.json()["reused"] is True
 
     second = upload_pdf(test_client, V2_PDF)
     assert second.status_code == 201, second.text

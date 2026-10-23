@@ -62,11 +62,11 @@ class JsonGenerationStore:
     def find_reusable(
         self, selection_id: str, model: str, prompt_version: str
     ) -> dict[str, Any] | None:
-        for record in self.all():
-            if (
-                record.get("selection_id") == selection_id
-                and record.get("model") == model
-                and record.get("prompt_version") == prompt_version
-            ):
-                return record
-        return None
+        matching = [
+            record
+            for record in self.all()
+            if record.get("selection_id") == selection_id
+            and record.get("model") == model
+            and record.get("prompt_version") == prompt_version
+        ]
+        return max(matching, key=lambda record: record["created_at"], default=None)
