@@ -6,7 +6,7 @@ Hello,
 
 I have completed the CT-200 document extraction and QA generation assignment.
 
-- **GitHub repository:** `[Add the repository URL after pushing this project]`
+- **GitHub repository:** <https://github.com/Sirivanka206/ri9T-AI/tree/ct200-implementation>
 - **Approach document:** [`APPROACH.md`](./APPROACH.md)
 - **Setup, API usage, and v1 → v2 demo:** [`README.md`](./README.md)
 
